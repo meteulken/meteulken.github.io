@@ -1,105 +1,253 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Mete Ulken</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Comfortaa:700" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <meta name="description" content="Mete Ülken - Yazılım Geliştirici. Portfolyo ve CV.">
+    <title>Mete Ülken | Software Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="index.css">
 </head>
+
 <body>
-    <div id="loading">
-        <div id="spinner"></div>
-    </div>
-    <div id="particles-js"></div>
-    <div id="box">
-        <div class="box1 onlywide animated bounceOutLeft" style="animation-delay:1.7s;"></div>
-        <div class="box2 onlywide animated bounceOutLeft" style="animation-delay:1.8s;"></div>
-        <div class="box2 onlywide animated bounceOutLeft" style="animation-delay:1.9s;"></div>
-        <div class="box2 animated bounceOutRight" style="animation-delay:1.9s;"></div>
-        <div class="box2 onlywide animated bounceOutRight" style="animation-delay:1.8s;"></div>
-        <div class="box2 onlywide animated bounceOutRight" style="animation-delay:1.7s;"></div>
-    </div>
-    <a id="about" onclick="showabout()" class="animated fadeIn" style="animation-delay:2.2s;">Hakkımda</a>
-    <a id="work" onclick="showwork()" class="animated fadeIn" style="animation-delay:2.2s;">Projeler</a>
-    <a id="contact" onclick="showcontact()" class="animated fadeIn" style="animation-delay:2.2s;">Iletisim</a>
-    <div id="middle" class="animated slideInDown" style="animation-delay:2.0s;">
-        <h1>Mete Ulken</h1>
-        <h2>Software & Game Developer / Student / Human</h2>
-        <div id="menu">
-            <a onclick="showabout()">Hakkımda</a>
-            <a onclick="showwork()">Projeler</a>
-            <a onclick="showcontact()">Iletisim</a>
-        </div>
-        <table>
-                <tr>
-                    <td class="animated zoomIn" style="animation-delay:2.2s;"><a class="social"><i class="fab fa-facebook"></i></a></td>
-                    <td class="animated zoomIn" style="animation-delay:2.4s;"><a class="social"><i class="fab fa-twitter"></i></a></td>
-                    <td class="animated zoomIn" style="animation-delay:2.6s;"><a class="social"><i class="fab fa-instagram"></i></a></td>
-                    <td class="animated zoomIn" style="animation-delay:2.8s;"><a class="social"><i class="fab fa-dribbble"></i></a></td>
-                </tr>
-        </table>
-    </div>
-    <div id="work_container" class="container">
-        <div onclick="closework()"><i class="fas fa-angle-right"></i></div>
-        <h1>Projelerim.</h1>
-        <section>
-            <h2>Yaptıgım Projeler</h2>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-            <div id="used">
-                <div><i class="fas fa-circle"></i>&nbsp;HTML5</div>
-                <div><i class="fas fa-circle"></i>&nbsp;CSS3</div>
-                <div><i class="fas fa-circle"></i>&nbsp;Javascript</div>
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">Mete.</a>
+            <ul class="nav-links">
+                <li><a href="#about">Hakkımda</a></li>
+                <li><a href="#experience">Deneyim</a></li>
+                <li><a href="#projects">Projeler</a></li>
+                <li><a href="#contact">İletişim</a></li>
+            </ul>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
             </div>
-            <button class="btn_one">button 1</button>
-            <button class="btn_two">button 2</button>
-        </section>
-    </div>
-    <div id="about_container" class="container">
-            <div onclick="closeabout()"><i class="fas fa-angle-left"></i></div>
-            <h1>Hakkımda.</h1>
-            <section>
-                <h2>Benim hakkımda</h2>
-                <p>
-                    Merhaba! Ben Mete. 22 yaşındayım ve oyun geliştirme alanına büyük bir ilgi duyuyorum. Aynı zamanda geleceğin teknolojilerinden olan insansız hava araçlarıyla ilgili bir projede çalışıyorum. Şu anda Ecole 42'nin öğrencisi olarak eğitimimi sürdürüyorum. 
-                </p>
-                <p>
-                    Oyun dünyasına olan ilgim ve teknolojiye duyduğum merakı bir araya getirerek, Unity ve Unreal Engine 5 gibi oyun geliştirme platformlarına da büyük bir ilgi duyuyorum. Hem yaratıcı oyun deneyimleri oluşturarak insanları eğlendirmeyi hem de geleceğin teknolojileriyle yenilikçi projelerde yer alarak kendimi geliştirmeyi amaçlıyorum.
-                </p>
-            </section>
-            <section>
-                <h2>yetenekler</h2>
-                <p>
-                    C, C++, C# & Unity, Unreal Engine 5 ;)
-                </p>
-            </section>
         </div>
-          <div id="contact_container" class="container">
-            <div onclick="closecontact()"><i class="fas fa-angle-down"></i></div>
-            <h1>contact.</h1>
-            <section>
-                <h2>contact me</h2>
-                <p>
-                    <form>
-                        <input type="text" placeholder="name" required>
-                        <input type="email" placeholder="email" required><br>
-                        <textarea placeholder="your message" required rows="5"></textarea><br>
-                        <button class="btn_one">send</button>
-                    </form> 
+    </nav>
+
+    <header id="hero" class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <p class="greeting">Merhaba, Ben</p>
+                <h1>Mete Ülken</h1>
+                <h2>Software Developer</h2>
+                <p class="bio">
+                    Teknolojiye ilgi duyan, öğrenmeye ve gelişmeye açık bir yazılım geliştiriciyim.
+                    Backend ve oyun geliştirme alanlarında çeşitli projeler geliştiriyor, aynı zamanda yapay zekâ
+                    teknolojileri üzerine kendimi geliştirmekteyim.
+                    Araştırma, problem çözme ve proje geliştirme süreçlerinde aktif rol almaktan keyif alırım.
                 </p>
-            </section>
+                <div class="hero-btns">
+                    <a href="#projects" class="btn btn-primary">Projelerimi Gör</a>
+                    <a href="#contact" class="btn btn-outline">İletişime Geç</a>
+                </div>
+                <div class="social-links">
+                    <a href="https://github.com/meteulken" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://linkedin.com/in/meteulken" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="mailto:mete.ulken71@gmail.com"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+            <div class="hero-img">
+                <img src="images/profile.png" alt="Mete Ülken">
+            </div>
         </div>
-        <div id="footer">
-            made on earth by a human <br> <a href="https://github.com/meteulken">meteulken</a>
+    </header>
+
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">Hakkımda</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        Unity ve Unreal Engine 5 gibi platformlarla çeşitli oyunlar geliştirme deneyimim var.
+                        Aynı zamanda, web geliştirme alanında da çalışıyorum.
+                    </p>
+                    <p>
+                        Şu anda Django ve Node.js ile Express.js kullanarak MongoDB tabanlı çeşitli projelerde backend
+                        geliştiriciliği yapıyorum.
+                        Hem yaratıcı oyun deneyimleri sunmayı hem de yenilikçi projelerde yer alarak teknoloji
+                        dünyasında ilerlemeyi amaçlıyorum.
+                    </p>
+                </div>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <i class="fas fa-code"></i>
+                        <h3>Diller & Backend</h3>
+                        <p>PHP, .NET, Go, C++, Python, Node.js</p>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fas fa-gamepad"></i>
+                        <h3>Oyun Geliştirme</h3>
+                        <p>Unity, Unreal Engine 5</p>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fas fa-database"></i>
+                        <h3>Veritabanı & Araçlar</h3>
+                        <p>MongoDB, Git, Docker</p>
+                    </div>
+                </div>
+            </div>
         </div>
-    <script src="index.js" type="text/javascript"></script>
-    <script src="particles.js"></script>
+    </section>
+
+    <section id="experience" class="section bg-alt">
+        <div class="container">
+            <h2 class="section-title">Deneyim</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">Ekim 2024 - Ekim 2025</div>
+                    <div class="timeline-content">
+                        <h3>Software Developer</h3>
+                        <h4>Hepsiburada</h4>
+                        <p>Sancaktepe, İstanbul, Türkiye</p>
+                        <p>
+                            NP-hard bir problem olan 3D Bin Packing için Python ile algoritmik çözüm geliştirdim.
+                            PHP ve .NET tabanlı projelerde, katmanlı mimari kullanarak geliştirmeler yaptım ve mevcut
+                            yapıları iyileştirdim.
+                            Event-driven mimariler kullanarak BigQuery üzerinde veri işleme ve geliştirme çalışmaları
+                            yaptım.
+                        </p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Temmuz 2022 - Haziran 2025</div>
+                    <div class="timeline-content">
+                        <h3>Student</h3>
+                        <h4>42 İstanbul & 42 Kocaeli</h4>
+                        <p>Kocaeli, Türkiye</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Aralık 2023 - Şubat 2024</div>
+                    <div class="timeline-content">
+                        <h3>News Editor</h3>
+                        <h4>Tamindir</h4>
+                        <p>Teknoloji yazarlığı yaparak haber ve makale içerikleri hazırladım.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2022</div>
+                    <div class="timeline-content">
+                        <h3>Editor</h3>
+                        <h4>Playerbros.com</h4>
+                        <p>Teknoloji yazarlığı yaparak haber ve makale içerikleri hazırladım.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2021</div>
+                    <div class="timeline-content">
+                        <h3>Editor</h3>
+                        <h4>pchocasi.com</h4>
+                        <p>Teknoloji yazarlığı yaparak haber ve makale içerikleri hazırladım.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2019 - 2020</div>
+                    <div class="timeline-content">
+                        <h3>Editor</h3>
+                        <h4>globalklavye.com</h4>
+                        <p>Teknoloji yazarlığı yaparak haber ve makale içerikleri hazırladım.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Eylül 2018 - Haziran 2019</div>
+                    <div class="timeline-content">
+                        <h3>Muhasebe</h3>
+                        <h4>Sepaş Enerji</h4>
+                        <p>Kocaeli, Türkiye</p>
+                        <p>Muhasebe departmanında fatura, kayıt ve raporlama süreçlerine destek verdim.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="section">
+        <div class="container">
+            <h2 class="section-title">Eğitim & Sertifikalar</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">Temmuz 2022</div>
+                    <div class="timeline-content">
+                        <h3>Diploma of Education, Software Development</h3>
+                        <h4>42</h4>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Eylül 2023</div>
+                    <div class="timeline-content">
+                        <h3>Bachelor of Science (BS), Business Administration</h3>
+                        <h4>Anadolu Üniversitesi</h4>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Ekim 2023</div>
+                    <div class="timeline-content">
+                        <h3>Associate's degree, Computer Programming</h3>
+                        <h4>İstanbul Üniversitesi</h4>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2019 - 2021</div>
+                    <div class="timeline-content">
+                        <h3>Associate's degree, Tourism and Travel Services Management</h3>
+                        <h4>Muğla Sıtkı Koçman Üniversitesi</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 3rem;">
+                <h3 style="color: var(--text-primary); margin-bottom: 1.5rem;">Sertifikalar</h3>
+                <ul style="color: var(--text-secondary); list-style: disc; padding-left: 1.5rem;">
+                    <li>Doğru ve Etkileyici Konuşma</li>
+                    <li>IHA - 1 Sportif / Amatör</li>
+                    <li>Siber Güvenlik 101</li>
+                    <li>C++ Programlama Geliştirme ve Uyum Eğitimi</li>
+                    <li>Hi-Kod Veri Bilimi</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section bg-alt">
+        <div class="container">
+            <h2 class="section-title">Projeler</h2>
+            <div id="projects-container">
+                <!-- Projects will be loaded here dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">İletişim</h2>
+            <div class="contact-wrapper">
+                <p class="contact-text">
+                    Yeni fırsatlara ve işbirliklerine açığım.
+                    Sorularınız veya sadece merhaba demek için bana ulaşabilirsiniz!
+                </p>
+                <a href="mailto:mete.ulken71@gmail.com" class="btn btn-primary big-btn">Merhaba De</a>
+
+                <div class="footer-socials">
+                    <a href="https://github.com/meteulken" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://linkedin.com/in/meteulken" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="mailto:mete.ulken71@gmail.com"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Mete Ülken. Built with <i class="fas fa-heart"></i> and Code.</p>
+        </div>
+    </footer>
+
     <script src="app.js"></script>
 </body>
+
 </html>

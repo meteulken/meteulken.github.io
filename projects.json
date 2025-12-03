@@ -1,0 +1,148 @@
+{
+    "games": [
+        {
+            "title": "CarryWithCareGame",
+            "description": "Unity ile geliştirilmiş, fizik tabanlı taşıma ve denge oyunu. Oyuncuların kargoları dikkatlice hedefe ulaştırması gereken eğlenceli bir simülasyon.",
+            "technologies": [
+                "Unity",
+                "C#",
+                "Physics"
+            ],
+            "link": "https://github.com/meteulken/CarryWithCareGame"
+        },
+        {
+            "title": "Covert-Service-Private",
+            "description": "Gizli görev temalı, taktiksel nişancı ve strateji oyunu. Gelişmiş yapay zeka ve gizlilik mekanikleri içerir. (Özel Proje)",
+            "technologies": [
+                "Unreal Engine 5",
+                "C++",
+                "AI"
+            ],
+            "link": "https://github.com/meteulken/Covert-Service-Private"
+        },
+        {
+            "title": "Warehouse",
+            "description": "Kapsamlı depo yönetim ve lojistik simülasyonu. Envanter takibi ve optimizasyon algoritmaları içerir. (Özel Proje)",
+            "technologies": [
+                "Unity",
+                "C#",
+                "Simulation"
+            ],
+            "link": "https://github.com/meteulken/Warehouse"
+        },
+        {
+            "title": "The-Lurking-Darkness",
+            "description": "Karanlık atmosferli, gerilim ve hayatta kalma odaklı 3D korku oyunu.",
+            "technologies": [
+                "Unreal Engine",
+                "Blueprints",
+                "Lighting"
+            ],
+            "link": "https://github.com/meteulken/The-Lurking-Darkness"
+        },
+        {
+            "title": "So_Long",
+            "description": "42 Okulu müfredatı kapsamında geliştirilen 2D top-down macera ve toplama oyunu.",
+            "technologies": [
+                "C",
+                "MiniLibX",
+                "Game Logic"
+            ],
+            "link": "https://github.com/meteulken/So_Long"
+        }
+    ],
+    "backend": [
+        {
+            "title": "commit-helper-intellij",
+            "description": "IntelliJ IDEA kullanıcıları için geliştirilmiş, yapay zeka destekli otomatik commit mesajı oluşturucu eklentisi.",
+            "technologies": [
+                "Java",
+                "IntelliJ Platform SDK",
+                "AI"
+            ],
+            "link": "https://github.com/meteulken/commit-helper-intellij"
+        },
+        {
+            "title": "dbqueue",
+            "description": "Yüksek performanslı ve güvenilir veritabanı tabanlı kuyruk (queue) yönetim sistemi.",
+            "technologies": [
+                "Python",
+                "PostgreSQL",
+                "Concurrency"
+            ],
+            "link": "https://github.com/meteulken/dbqueue"
+        },
+        {
+            "title": "db-rabbit-cdc",
+            "description": "Veritabanı değişikliklerini yakalayıp (CDC) RabbitMQ'ya aktaran entegrasyon aracı.",
+            "technologies": [
+                "Go",
+                "RabbitMQ",
+                "CDC"
+            ],
+            "link": "https://github.com/meteulken/db-rabbit-cdc"
+        },
+        {
+            "title": "Inception",
+            "description": "Docker konteynerleri ile tam kapsamlı sistem mimarisi kurulumu (Nginx, WordPress, MariaDB).",
+            "technologies": [
+                "Docker",
+                "System Administration",
+                "Bash"
+            ],
+            "link": "https://github.com/meteulken/Inception"
+        },
+        {
+            "title": "Kodluyoruz-HiKod_02",
+            "description": "Veri bilimi bootcamp kapsamında geliştirilen Python tabanlı veri analizi ve görselleştirme projeleri.",
+            "technologies": [
+                "Python",
+                "Pandas",
+                "Data Science"
+            ],
+            "link": "https://github.com/meteulken/Kodluyoruz-HiKod_02"
+        },
+        {
+            "title": "BlogApp",
+            "description": "Modern web standartlarına uygun, RESTful API mimarisine sahip blog uygulaması altyapısı.",
+            "technologies": [
+                "Python",
+                "Django",
+                "PostgreSQL"
+            ],
+            "link": "https://github.com/meteulken/BlogApp"
+        }
+    ],
+    "algorithms": [
+        {
+            "title": "3DBinPacking",
+            "description": "Lojistik optimizasyonu için geliştirilmiş 3 boyutlu kutu yerleştirme algoritması.",
+            "technologies": [
+                "Python",
+                "Optimization",
+                "Math"
+            ],
+            "link": "#"
+        },
+        {
+            "title": "Push_Swap",
+            "description": "Sınırlı sayıda işlem kullanarak sayıları sıralayan yüksek verimli yığın (stack) sıralama algoritması.",
+            "technologies": [
+                "C",
+                "Sorting Algorithms",
+                "Complexity"
+            ],
+            "link": "https://github.com/meteulken/Push_Swap"
+        },
+        {
+            "title": "Philosophers",
+            "description": "Dining Philosophers probleminin çözümü. Thread yönetimi, mutex ve deadlock önleme simülasyonu.",
+            "technologies": [
+                "C",
+                "Threads",
+                "Concurrency"
+            ],
+            "link": "https://github.com/meteulken/Philosophers"
+        }
+    ]
+}

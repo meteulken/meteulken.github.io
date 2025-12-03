@@ -1,113 +1,102 @@
-particlesJS('particles-js',
-{
-  "particles": {
-    "number": {
-      "value": 160,
-      "density": {
-        "enable": true,
-        "value_area": 4000
-      }
-    },
-    "color": {
-      "value": "#ff3232"
-    },
-    "shape": {
-      "type": "circle",
-      "stroke": {
-        "width": 0,
-        "color": "#ff3232"
-      },
-      "polygon": {
-        "nb_sides": 5
-      },
-      "image": {
-        "src": "img/github.svg",
-        "width": 100,
-        "height": 100
-      }
-    },
-    "opacity": {
-      "value": 1,
-      "random": true,
-      "anim": {
-        "enable": true,
-        "speed": 0.5,
-        "opacity_min": 0,
-        "sync": false
-      }
-    },
-    "size": {
-      "value": 5,
-      "random": true,
-      "anim": {
-        "enable": false,
-        "speed": 2,
-        "size_min": 0.3,
-        "sync": false
-      }
-    },
-    "line_linked": {
-      "enable": false,
-      "distance": 150,
-      "color": "#ffffff",
-      "opacity": 0.4,
-      "width": 1
-    },
-    "move": {
-      "enable": true,
-      "speed": 1,
-      "direction": "none",
-      "random": true,
-      "straight": false,
-      "out_mode": "out",
-      "bounce": false,
-      "attract": {
-        "enable": false,
-        "rotateX": 600,
-        "rotateY": 600
-      }
-    }
-  },
-  "interactivity": {
-    "detect_on": "canvas",
-    "events": {
-      "onhover": {
-        "enable": false,
-        "mode": "bubble"
-      },
-      "onclick": {
-        "enable": false,
-        "mode": "repulse"
-      },
-      "resize": true
-    },
-    "modes": {
-      "grab": {
-        "distance": 400,
-        "line_linked": {
-          "opacity": 1
+const hamburger = document.querySelector('.hamburger');
+const navLinks = document.querySelector('.nav-links');
+
+hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+});
+
+// Close mobile menu when a link is clicked
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+    });
+});
+
+// Smooth scrolling for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+});
+
+// Scroll Animation Observer
+const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1
+};
+
+const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('fade-in');
+            observer.unobserve(entry.target);
         }
-      },
-      "bubble": {
-        "distance": 250,
-        "size": 0,
-        "duration": 2,
-        "opacity": 0,
-        "speed": 3
-      },
-      "repulse": {
-        "distance": 400,
-        "duration": 0.4
-      },
-      "push": {
-        "particles_nb": 4
-      },
-      "remove": {
-        "particles_nb": 2
-      }
+    });
+}, observerOptions);
+
+document.querySelectorAll('.section').forEach(section => {
+    section.classList.add('hidden');
+    observer.observe(section);
+});
+
+// Fetch and Render Projects
+async function loadProjects() {
+    try {
+        const response = await fetch('projects.json');
+        const data = await response.json();
+        const container = document.getElementById('projects-container');
+
+        // Helper function to create project card HTML
+        const createProjectCard = (project) => {
+            const tagsHtml = project.technologies.map(tech => `<span>${tech}</span>`).join('');
+            return `
+                <div class="project-card">
+                    <div class="project-info">
+                        <h3>${project.title}</h3>
+                        <p>${project.description}</p>
+                        <div class="tags">
+                            ${tagsHtml}
+                        </div>
+                        <div class="project-links">
+                            <a href="${project.link}" target="_blank"><i class="fab fa-github"></i> Kod</a>
+                        </div>
+                    </div>
+                </div>
+            `;
+        };
+
+        // Helper function to create a category section
+        const createCategorySection = (title, projects) => {
+            if (!projects || projects.length === 0) return '';
+
+            const cardsHtml = projects.map(createProjectCard).join('');
+
+            return `
+                <div class="project-category">
+                    <h3 class="category-title">${title}</h3>
+                    <div class="projects-grid">
+                        ${cardsHtml}
+                    </div>
+                </div>
+            `;
+        };
+
+        let html = '';
+        html += createCategorySection('Oyun Geliştirme', data.games);
+        html += createCategorySection('Backend & Sistem', data.backend);
+        html += createCategorySection('Algoritmalar', data.algorithms);
+
+        container.innerHTML = html;
+
+    } catch (error) {
+        console.error('Error loading projects:', error);
+        document.getElementById('projects-container').innerHTML = '<p>Projeler yüklenirken bir hata oluştu.</p>';
     }
-  },
-  "retina_detect": true
 }
 
-);
+// Load projects when DOM is ready
+document.addEventListener('DOMContentLoaded', loadProjects);

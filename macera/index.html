@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#ffd6e4">
+<meta name="robots" content="noindex, nofollow">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<title>Mete ❤ Bahar – Aşk Macerası</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💞</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+  [hidden]{display:none!important}
+  html,body{width:100%;height:100%;overflow:hidden;background:#ffd6e4;font-family:'Baloo 2',system-ui,sans-serif;
+    touch-action:none;user-select:none;-webkit-user-select:none;color:#7a1f47;overscroll-behavior:none}
+  canvas{display:block;touch-action:none}
+
+  #hud{position:fixed;top:0;left:0;right:0;padding:10px 64px 0;display:flex;justify-content:center;pointer-events:none;z-index:3}
+  #hudTop{display:flex;gap:8px;align-items:center;font-weight:800;font-size:clamp(13px,2vw,18px);flex-wrap:wrap;justify-content:center}
+  .pill{background:rgba(255,255,255,.88);border-radius:999px;padding:2px 14px;box-shadow:0 2px 8px rgba(160,40,90,.15)}
+  #exitN{background:#ff3d7f;color:#fff}
+  #net{background:#6b5a7a;color:#fff}
+
+  #corner{position:fixed;top:10px;right:10px;display:flex;gap:8px;z-index:8}
+  #corner button{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.9);font-size:20px;padding:0;margin:0;
+    box-shadow:0 3px 0 rgba(160,40,90,.25);color:#7a1f47}
+
+  #divider{position:fixed;background:#fff;z-index:2;pointer-events:none;box-shadow:0 0 12px rgba(0,0,0,.2)}
+  #divider.v{top:0;bottom:0;left:50%;width:4px;transform:translateX(-50%)}
+  #divider.h{left:0;right:0;top:50%;height:4px;transform:translateY(-50%)}
+
+  #arrow{position:fixed;transform:translate(-50%,-50%);z-index:4;pointer-events:none;display:flex;flex-direction:column;align-items:center;
+    font-weight:800;color:#fff;text-shadow:0 2px 4px rgba(0,0,0,.45)}
+  #arrow .ar{font-size:30px;color:#ff3d7f;display:inline-block;text-shadow:0 0 6px #fff}
+  #arrow .nm{font-size:13px}
+
+  #toast{position:fixed;left:50%;bottom:120px;transform:translateX(-50%);background:rgba(122,31,71,.9);color:#fff;border-radius:16px;
+    padding:8px 18px;font-weight:700;font-size:16px;width:max-content;max-width:min(92vw,560px);text-align:center;z-index:6;pointer-events:none}
+
+  #touch{position:fixed;left:0;right:0;bottom:0;display:flex;justify-content:space-between;align-items:flex-end;
+    padding:0 18px calc(18px + env(safe-area-inset-bottom));pointer-events:none;z-index:7}
+  #touch .tg{display:flex;gap:14px;pointer-events:auto}
+  #touch button{width:76px;height:76px;border-radius:50%;font-size:30px;margin:0;padding:0;background:rgba(255,255,255,.6);color:#7a1f47;
+    box-shadow:0 4px 0 rgba(160,40,90,.25);touch-action:none}
+  #touch button.on{background:rgba(255,61,127,.85);color:#fff;transform:translateY(3px);box-shadow:0 1px 0 rgba(160,40,90,.25)}
+  #touch #tJ{width:92px;height:92px}
+
+  .overlay{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(255,190,215,.5);
+    backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);padding:16px;z-index:10;touch-action:auto}
+  .card{background:#fff;border-radius:28px;padding:24px 22px;max-width:480px;width:100%;text-align:center;
+    box-shadow:0 20px 60px rgba(160,40,90,.3);max-height:100%;overflow:auto;animation:cardIn .45s cubic-bezier(.2,1.4,.4,1)}
+  @keyframes cardIn{from{transform:scale(.7);opacity:0}to{transform:scale(1);opacity:1}}
+  .card h1{font-size:clamp(30px,6vw,44px);line-height:1}
+  .card h2{font-size:28px;line-height:1.1;margin-bottom:6px}
+  .names{font-size:clamp(22px,4.5vw,30px);font-weight:800;margin:4px 0 6px}
+  .cm{color:#3b7dd8}.cb{color:#e8457f}
+  .card p{font-size:16px;line-height:1.35;margin-top:8px;font-weight:500}
+  .card .msg{font-size:19px;font-weight:700;background:#fff0f5;border-radius:18px;padding:14px;margin-top:10px}
+  .card .small{font-size:14px;opacity:.8}
+  .card .stats{font-weight:800;font-size:17px}
+  .card details{margin-top:10px;text-align:left}
+  .card summary{cursor:pointer;font-weight:700;text-align:center}
+  .card .letter{background:#fff0f5;border-radius:14px;padding:10px 12px;font-size:15px}
+  .big{font-size:52px;line-height:1}
+  .controls{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px;font-size:14px;line-height:1.5}
+  .ctrl{border-radius:16px;padding:10px;background:#eef5ff}
+  .ctrl.pink{background:#fff0f5}
+  .ctrl b{font-size:18px;display:block}
+  kbd{font-family:inherit;background:#fff;border-radius:6px;padding:0 6px;box-shadow:0 2px 0 rgba(0,0,0,.15);font-weight:700}
+  .btns{display:flex;flex-direction:column;align-items:center}
+  button{font-family:inherit;font-weight:800;font-size:20px;border:0;border-radius:999px;padding:10px 30px;
+    background:linear-gradient(135deg,#ff7aa8,#ff3d7f);color:#fff;cursor:pointer;margin-top:16px;box-shadow:0 6px 0 #c42a60}
+  button:active{transform:translateY(4px);box-shadow:0 2px 0 #c42a60}
+  button:disabled{opacity:.5}
+  button.blue{background:linear-gradient(135deg,#7ab4ff,#3b7dd8);box-shadow:0 6px 0 #2a5ea8}
+  button.sec{background:#fff;color:#e8457f;box-shadow:0 4px 0 #f3b6cc;font-size:16px;padding:7px 22px;margin-top:10px;border:2px solid #ffc2d8}
+  button.voted{background:linear-gradient(135deg,#5fd18a,#2fae63);box-shadow:0 6px 0 #1f7d45;color:#fff;border-color:transparent}
+  button .cnt{font-size:.8em;opacity:.9;margin-left:6px}
+  .code{font-size:52px;letter-spacing:10px;font-weight:800;background:#fff0f5;border-radius:18px;margin:10px 0 0;padding:4px 0 0 10px}
+  .link{word-break:break-all;user-select:text;-webkit-user-select:text}
+  .join{display:flex;gap:8px;justify-content:center;align-items:flex-end;margin-top:6px}
+  .join input{font-family:inherit;font-weight:800;font-size:24px;width:130px;text-align:center;text-transform:uppercase;letter-spacing:4px;
+    border:3px solid #ffc2d8;border-radius:999px;padding:6px 10px;color:#7a1f47;outline:none}
+  .join input:focus{border-color:#ff3d7f}
+  .join button{margin-top:0}
+  .or{margin-top:14px;font-size:14px;opacity:.6}
+  #voteStatus{font-weight:700}
+
+  .pop{position:fixed;font-weight:800;font-size:22px;pointer-events:none;z-index:5;white-space:nowrap;
+    text-shadow:0 2px 0 #fff,0 0 8px #fff;animation:pop .9s ease-out forwards}
+  @keyframes pop{0%{opacity:0;transform:translate(-50%,-50%) scale(.4)}
+    20%{opacity:1;transform:translate(-50%,-70%) scale(1.25)}
+    100%{opacity:0;transform:translate(-50%,-260%) scale(1)}}
+  #banner{position:fixed;left:50%;top:40%;transform:translate(-50%,-50%);font-size:clamp(30px,6vw,56px);font-weight:800;
+    color:#fff;text-shadow:0 4px 0 #ff3d7f,0 0 20px rgba(255,61,127,.6);pointer-events:none;z-index:6;text-align:center;
+    line-height:1.05;opacity:0;white-space:nowrap}
+  #banner.show{animation:banner 2.2s ease forwards}
+  @keyframes banner{0%{opacity:0;transform:translate(-50%,-50%) scale(.5)}15%{opacity:1;transform:translate(-50%,-50%) scale(1.1)}
+    25%{transform:translate(-50%,-50%) scale(1)}80%{opacity:1}100%{opacity:0;transform:translate(-50%,-80%)}}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/peerjs@1.5.4/dist/peerjs.min.js"></script>
+<script type="importmap">
+  { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" } }
+</script>
+</head>
+<body>
+
+<div id="hud" hidden>
+  <div id="hudTop">
+    <div class="pill" id="lvl"></div>
+    <div class="pill" id="hearts"></div>
+    <div class="pill" id="letter"></div>
+    <div class="pill" id="exitN" hidden></div>
+    <div class="pill" id="net" hidden>📡 Bağlantı bekleniyor…</div>
+  </div>
+</div>
+<div id="corner">
+  <button id="btnPause" title="Durdur" hidden>⏸</button>
+  <button id="btnSound" title="Ses">🔊</button>
+</div>
+<div id="divider" hidden></div>
+<div id="arrow" hidden><span class="ar">➤</span><span class="nm"></span></div>
+<div id="banner"></div>
+<div id="toast" hidden></div>
+<div id="touch" hidden>
+  <div class="tg"><button id="tL">◀</button><button id="tR">▶</button></div>
+  <div class="tg"><button id="tA">✋</button><button id="tJ">⬆</button></div>
+</div>
+<div id="overlay" class="overlay"></div>
+
+<script type="module" src="main.js"></script>
+</body>
+</html>
